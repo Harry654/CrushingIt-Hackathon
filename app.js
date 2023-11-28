@@ -24,6 +24,10 @@ function handleMenuEscPress(event) {
 
 // Function to open the menu
 function openMenu(target) {
+  if (target.getAttribute("id") === "store-dropdown-container")
+    closeMenu(document.querySelector("#alerts-container"));
+  else closeMenu(document.querySelector("#store-dropdown-container"));
+
   target.classList.add("menu-active");
   const allMenuItems = target.querySelectorAll("[role='menuitem']");
   lastFocusedElement = document.activeElement; // Store the currently focused element
@@ -97,19 +101,11 @@ function toggleMenu(event, target) {
       openMenu(target);
     }
 
-    const isAriaExpandedDefined =
-      event.target.getAttribute("aria-expanded") !== null;
-    const isExpanded = isAriaExpandedDefined
-      ? event.target.getAttribute("aria-expanded")
-      : event.target.parentNode.getAttribute("aria-expanded");
+    const isExpanded = event.currentTarget.getAttribute("aria-expanded");
 
     const newExpandedValue = isExpanded !== "true" ? "true" : "false";
 
-    if (isAriaExpandedDefined) {
-      event.target.setAttribute("aria-expanded", newExpandedValue);
-    } else {
-      event.target.parentNode.setAttribute("aria-expanded", newExpandedValue);
-    }
+    event.currentTarget.setAttribute("aria-expanded", newExpandedValue);
   }
 }
 
