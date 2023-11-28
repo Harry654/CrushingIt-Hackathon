@@ -434,7 +434,7 @@ body {
 
 .add-product {
   display: flex;
-  padding: 0px;
+  padding: 8px 8px 12px 8px;
   align-items: center;
   gap: 96px;
   align-self: stretch;
@@ -531,7 +531,7 @@ body {
 
 .add-domain {
   display: flex;
-  padding: 0px;
+  padding: 8px 8px 12px 8px;
   align-items: center;
   gap: 96px;
   align-self: stretch;
@@ -600,7 +600,7 @@ body {
 
 .name-store {
   display: flex;
-  padding: 0px;
+  padding: 8px 8px 12px 8px;
   align-items: center;
   gap: 96px;
   align-self: stretch;
@@ -669,7 +669,7 @@ body {
 
 .payment-provider {
   display: flex;
-  padding: 0px;
+  padding: 8px 8px 12px 8px;
   align-items: center;
   gap: 96px;
   align-self: stretch;
@@ -739,9 +739,6 @@ body {
 }
 .overflow-hidden {
   overflow: hidden;
-}
-.h-0 {
-  height: 0px;
 }
 
 .guide-padding {
@@ -1154,7 +1151,7 @@ li {
 }
 
 .spinner {
-  animation: .2s spin linear infinite;
+  animation: 0.2s spin linear infinite;
 }
 @keyframes spin {
   from {
