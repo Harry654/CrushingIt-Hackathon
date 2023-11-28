@@ -224,8 +224,6 @@ let currentGuide = 1;
 function mininizeAll() {
   for (let i = 1; i <= Object.keys(guides).length; i++) {
     if (i !== currentGuide) {
-      // document.querySelector(`#${guides[i]}-large`).style.height = "0px";
-      // document.querySelector(`#${guides[i]}-large`).style.padding = "0px";
       document.querySelector(`#${guides[i]}-large`).style.display = "none";
       document.querySelector(`#${guides[i]}-mini`).style.display = "flex";
     }
@@ -241,9 +239,6 @@ function hideGuideMini(guide_num) {
 }
 
 function expandGuideItem(guide_num) {
-  // document.querySelector(`#${guides[guide_num]}-large`).style.height = "100%";
-  // document.querySelector(`#${guides[guide_num]}-large`).style.padding =
-  //   "8px 8px 12px 8px";
   document.querySelector(`#${guides[guide_num]}-large`).style.display = "flex";
 }
 
@@ -379,6 +374,25 @@ function checkboxClicked(checkbox_num) {
   updateProgress();
 }
 
+// Add event listeners for dashed circles mouseover and mouseleave
+let dashedCircles = document.querySelectorAll(".dashed-circles");
+// let checkboxBtns = document.querySelectorAll(".checkbox-container");
+
+function emptyCheckboxActive(target) {
+  target.setAttribute("stroke-dasharray", "");
+}
+function emptyCheckboxInactive(target) {
+  target.setAttribute("stroke-dasharray", "5 5");
+}
+for (let n = 0; dashedCircles && n < dashedCircles.length; n++) {
+  dashedCircles[n].addEventListener("mouseover", (event) => {
+    emptyCheckboxActive(event.target);
+  });
+  dashedCircles[n].addEventListener("mouseleave", (event) => {
+    emptyCheckboxInactive(event.target);
+  });
+}
+
 // Add event listeners for checkbox clicks
 for (let i = 1; i <= Object.keys(guides).length; i++) {
   let guideCheckboxClass = `.${guides[i]}-checkbox-container`;
@@ -397,24 +411,11 @@ for (let i = 1; i <= Object.keys(guides).length; i++) {
         checkboxClicked(checkbox_num);
       }
     });
+    checkboxes[n].addEventListener("focus", (event) => {
+      emptyCheckboxActive(event.target.children[0].children[0]);
+    });
+    checkboxes[n].addEventListener("blur", (event) => {
+      emptyCheckboxInactive(event.target.children[0].children[0]);
+    });
   }
-}
-
-// Add event listeners for dashed circles mouseover and mouseleave
-let dashedCircles = document.querySelectorAll(".dashed-circles");
-// let checkboxBtns = document.querySelectorAll(".checkbox-container");
-
-function emptyCheckboxActive(target) {
-  target.setAttribute("stroke-dasharray", "");
-}
-function emptyCheckboxInactive(target) {
-  target.setAttribute("stroke-dasharray", "5 5");
-}
-for (let n = 0; dashedCircles && n < dashedCircles.length; n++) {
-  dashedCircles[n].addEventListener("mouseover", (event) => {
-    emptyCheckboxActive(event.target);
-  });
-  dashedCircles[n].addEventListener("mouseleave", (event) => {
-    emptyCheckboxInactive(event.target);
-  });
 }

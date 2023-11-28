@@ -130,6 +130,7 @@ body {
   font-style: normal;
   font-weight: 500;
   line-height: 130%;
+  text-align: center;
 }
 .initials-box {
   display: flex;
@@ -1051,6 +1052,8 @@ body {
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
   position: absolute;
   transform: translateY(50px);
+  width: max-content;
+  max-width: 90%;
 }
 .alerts-top {
   display: flex;
